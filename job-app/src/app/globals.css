@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.loading {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 2em;
+}
+
+.loading span {
+  width: 0.3em;
+  height: 1em;
+  background-color: #203473;
+}
+
+.loading span:nth-of-type(1) {
+  animation: grow 1s -0.45s ease-in-out infinite;
+}
+
+.loading span:nth-of-type(2) {
+  animation: grow 1s -0.3s ease-in-out infinite;
+}
+
+.loading span:nth-of-type(3) {
+  animation: grow 1s -0.15s ease-in-out infinite;
+}
+
+.loading span:nth-of-type(4) {
+  animation: grow 1s ease-in-out infinite;
+}
+
+@keyframes grow {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(2);
+  }
+}
+.container{
+  border:1px solid rgb(198, 196, 196);
+  padding: 20px;
+  width:900px;
+}
+.text{
+  width:755px;
+}
+.jobp img{
+  width:66px;
+  height:59px;
+}
+.one{
+  background: rgba(86, 205, 173, 0.1);
+  color:green;
+}
+.line{
+  border-left:1px solid rgba(214, 221, 235, 1);
+}
+.two{
+  border: 1px solid rgba(255, 184, 54, 1);
+  color: rgba(255, 184, 54, 1);
+  background: rgba(255, 184, 54, 0.1);
+}
+.three{
+  color:rgba(70, 64, 222, 1);
+  border: 1px solid rgba(70, 64, 222, 1);
+  background:rgba(70, 64, 222, 0.1);
+}
+
+
+/* dashboardd */
+.dashboard ,.opp{
+  color:rgba(37, 50, 75, 1);
+}
+.description{
+  width:79%;
+}
+.my-icon{
+  color:rgb(102, 181, 102);
+}
+.icon-blue{
+  color:rgba(38, 164, 255, 1);
+  border:1px solid lightgray;
+}
+.p-color,.company{
+  color:rgba(81, 91, 111, 1);
+}
+.gray-bottom{
+  color:rgb(223, 222, 222);
+}
+.marketing{
+  border:none;
+}
+.social{
+  border:none;
+}
+
