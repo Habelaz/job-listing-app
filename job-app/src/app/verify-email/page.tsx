@@ -12,6 +12,11 @@ const VerifyEmailPage = () => {
   
   const email = searchParams.get('email');
 
+  // Check if email is available before proceeding
+  if (!email) {
+    return <p>Error: Email is missing. Please check your link.</p>;
+  }
+
   const handleOtpChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const value = event.target.value;
     setOtp(prevOtp => {
@@ -22,17 +27,11 @@ const VerifyEmailPage = () => {
   };
 
   const handleContinue = async () => {
-    if (!email) {
-      setError('Email is missing. Please try again.');
-      return;
-    }
-
-    setError(null); 
+    setError(null);
+    
     try {
       const response = await verifyEmail({ email, otp }).unwrap();
       
-      console.log(response); 
-
       if (response.success) {
         router.push('/api/auth/components/Landingpage');
       } else {
@@ -63,8 +62,6 @@ const VerifyEmailPage = () => {
             />
           ))}
         </div>
-        <p className='font-light text-center'>You can request to <span className='font-normal text-[#4640DE]'>Resend code</span> in</p>
-        <p className='text-center text-[#4640DE]'><span>0:30</span></p>
         <div className="text-center mt-5">
           <button className='bg-[#4640DE] text-white w-[300px] h-9 rounded-md' onClick={handleContinue} disabled={isLoading}>
             {isLoading ? 'Verifying...' : 'Continue'}
