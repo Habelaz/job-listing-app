@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
 
 interface FormData {
   name: string;
@@ -43,7 +44,7 @@ const RegisterForm = () => {
         console.log("Success:", response);
         setIsSucces(true);
         router.push(
-          `/api/auth/verify-email?email=${encodeURIComponent(data.email)}`
+          `/verify-email?email=${encodeURIComponent(data.email)}`
         );
       }
     } catch (error) {
@@ -59,7 +60,7 @@ const RegisterForm = () => {
         </h1>
         <button
           className="flex gap-1 items-center mx-auto pl-11 text-lg text-center border w-[300px] py-1 text-[#4640DE]"
-          onClick={() => signIn("google", { callbackUrl: "/api/auth/components/Landingpage" })}
+          onClick={() => signIn("google", { callbackUrl: "/components/Landingpage" })}
         >
           <img src="/Icongoogleicon.svg" alt="" /> Sign in with Google
         </button>
@@ -134,12 +135,12 @@ const RegisterForm = () => {
           {isSuccess && <p>Registration successful!</p>}
           <p className="mt-1">
             Already have an account?{" "}
-            <Link className="text-[#4640DE]" href="/api/auth/signin">
+            <Link className="text-[#4640DE]" href="/signin">
               Login
             </Link>
           </p>
           <p className="ml-[26%] mt-2 w-[300px] text-center">
-            By clicking 'Continue', you acknowledge that you have read and
+            By clicking &apos;Continue&apos;, you acknowledge that you have read and
             accept the Terms of Service and Privacy Policy.
           </p>
         </form>

@@ -4,15 +4,21 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faCirclePlus, faFire, faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { JobPosting } from '../api/auth/components/JobList';
+import { JobPosting } from '../components/JobList';
 
-function dateformat(date:string){
-  const datee = new Date(date)
+function dateformat(date: string) {
+  const datee = new Date(date);
 
-  const options = { year: 'numeric', month: 'short', day: 'numeric' };
+  // Update options with valid types for year, month, and day
+  const options: Intl.DateTimeFormatOptions = { 
+    year: 'numeric', 
+    month: 'short', 
+    day: 'numeric' 
+  };
   const formattedDate = datee.toLocaleDateString('en-US', options);
-  return formattedDate
+  return formattedDate;
 }
+
 
 const Dashboard = () => {
   const searchParams = useSearchParams();

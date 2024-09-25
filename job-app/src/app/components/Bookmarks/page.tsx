@@ -34,7 +34,7 @@ const Page = () => {
     <div className="p-5">
       <div className="flex justify-between w-[900px] font-bold text-[#25324B]">
         <p className="text-3xl ">My Bookmarks</p>
-        <Link href="/api/auth/components/Landingpage"> All jobs</Link>
+        <Link href="/components/Landingpage"> All jobs</Link>
       </div>
       <div>
         {jobList.map((job: JobPosting) => (

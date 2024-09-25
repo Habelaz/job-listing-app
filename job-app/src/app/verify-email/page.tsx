@@ -49,7 +49,7 @@ const VerifyEmailPage = () => {
       <div className=' w-[400px]'>
         <p className='text-3xl text-center text-[#25324B] mb-8 font-bold'>Verify Email</p>
         <p className='font-light'>
-          We've sent a verification code to the email address you provided. To complete the verification process, please enter the code here.
+          We&apos;ve sent a verification code to the email address you provided. To complete the verification process, please enter the code here.
         </p>
         <div className='text-center mt-8 mb-2'>
           {Array.from({ length: 4 }).map((_, index) => (

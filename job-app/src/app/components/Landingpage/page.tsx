@@ -14,7 +14,7 @@ function LandingPage() {
   const {data:session} = useSession({
     required:true,
     onUnauthenticated (){
-      redirect("/api/auth/signin?callbackUrl=/components/Landingpage")
+      redirect("/signin?callbackUrl=/components/Landingpage")
     }
   })
   console.log(jobList)
@@ -50,7 +50,7 @@ function LandingPage() {
               >
                 Logout
               </button>
-              <Link href="/api/auth/components/Bookmarks">
+              <Link href="/components/Bookmarks">
                 <button className="text-blue-950 bg-slate-100 rounded-3xl shadow-lg p-3" >
                   bookmarks
                 </button>

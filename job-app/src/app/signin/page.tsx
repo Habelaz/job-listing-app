@@ -26,7 +26,7 @@ const LoginPage = () => {
         setError('Invalid email or password');
       } else {
         // Redirect to the landing page upon successful login
-        router.push('/api/auth/components/Landingpage');
+        router.push('/components/Landingpage');
       }
     } catch (error) {
       console.error('Failed to login:', error);
@@ -72,8 +72,8 @@ const LoginPage = () => {
             Login
           </button>
           <p>
-            Don't have an account?{' '}
-            <Link className="text-[#4640DE]" href="/api/auth/signup">
+            Don&apos;t have an account?{' '}
+            <Link className="text-[#4640DE]" href="/signup">
               Signup
             </Link>
           </p>

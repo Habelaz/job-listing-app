@@ -4,7 +4,7 @@ import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { faBookmark as regularBookmark } from "@fortawesome/free-regular-svg-icons";
 import { useSession } from "next-auth/react"; // Import useSession
 import { useCreateBookmarkMutation, useUnbookmarkMutation } from "@/app/features/api";
-
+import Image from "next/image";
 export interface JobPosting {
   id: string;
   title: string;
@@ -83,7 +83,7 @@ const JobList = (props: JobPosting) => {
       </button>
 
       <div className="jobp">
-        <img src={props.logoUrl} alt="img" />
+        <img src={props.logoUrl} alt="Image" />
       </div>
       <div className="pl-3 text">
         <h2 className="text-[20px] font-semibold">{props.title}</h2>
