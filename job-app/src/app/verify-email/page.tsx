@@ -1,18 +1,20 @@
 'use client';
 import React, { useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useVerifyEmailMutation } from '@/app/features/api';
 
-const VerifyEmailPage = () => {
+interface VerifyEmailPageProps {
+  searchParams: { email?: string };
+}
+
+const VerifyEmailPage = ({ searchParams }: VerifyEmailPageProps) => {
   const [otp, setOtp] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [verifyEmail, { isLoading }] = useVerifyEmailMutation();
   const router = useRouter();
-  const searchParams = useSearchParams();
-  
-  const email = searchParams.get('email');
 
-  // Check if email is available before proceeding
+  const email = searchParams?.email;
+
   if (!email) {
     return <p>Error: Email is missing. Please check your link.</p>;
   }
@@ -28,10 +30,9 @@ const VerifyEmailPage = () => {
 
   const handleContinue = async () => {
     setError(null);
-    
     try {
       const response = await verifyEmail({ email, otp }).unwrap();
-      
+
       if (response.success) {
         router.push('/api/auth/components/Landingpage');
       } else {
@@ -45,20 +46,20 @@ const VerifyEmailPage = () => {
 
   return (
     <div className='flex justify-center items-center mt-[120px]'>
-      <div className=' w-[400px]'>
+      <div className='w-[400px]'>
         <p className='text-3xl text-center text-[#25324B] mb-8 font-bold'>Verify Email</p>
         <p className='font-light'>
           We&apos;ve sent a verification code to the email address you provided. To complete the verification process, please enter the code here.
         </p>
         <div className='text-center mt-8 mb-2'>
           {Array.from({ length: 4 }).map((_, index) => (
-            <input 
+            <input
               key={index}
-              className="border-purple-500 text-center bg-gray-100 border m-1 w-10 h-10 rounded-md" 
-              type="text" 
-              maxLength={1} 
-              value={otp[index] || ''} 
-              onChange={e => handleOtpChange(e, index)} 
+              className="border-purple-500 text-center bg-gray-100 border m-1 w-10 h-10 rounded-md"
+              type="text"
+              maxLength={1}
+              value={otp[index] || ''}
+              onChange={e => handleOtpChange(e, index)}
             />
           ))}
         </div>
